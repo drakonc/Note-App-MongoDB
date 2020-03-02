@@ -17,8 +17,12 @@
 	"devDependencies": {
 		"@types/express": "^4.17.1",
 		"@types/express-handlebars": "0.0.33",
+		"@types/mongoose": "^5.7.3",
 		"@types/morgan": "^1.7.37",
+		"dotenv": "^8.2.0",
+		"handlebars": "^4.5.0",
 		"nodemon": "^1.19.4",
+		"npm-check-updates": "^4.0.1",
 		"ts-node": "^8.4.1",
 		"typescript": "^3.6.4"
 	},
@@ -28,12 +32,12 @@
 		"express": "^4.17.1",
 		"express-handlebars": "^3.1.0",
 		"express-session": "^1.17.0",
-		"express-validator": "^6.3.1",
+		"method-override": "^3.0.0",
+		"mongoose": "^5.8.9",
 		"morgan": "^1.9.1",
 		"ncp": "^2.0.0",
 		"passport": "^0.4.1",
 		"passport-local": "^1.0.0",
-		"rimraf": "^3.0.0",
-		"timeago.js": "^4.0.2"
+		"rimraf": "^3.0.0"
 	}
 }

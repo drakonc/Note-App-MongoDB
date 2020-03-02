@@ -31,7 +31,7 @@ export class Aplicacion {
 			partialsDir: path.join(this.app.get("views"), "Partials"),
 			defaultLayout: "main",
 			extname: ".hbs",
-			helpers: require('./Library/handlebars')
+			helpers: require('./Helpers/handlebars')
 		}));
 		this.app.set('view engine', '.hbs');
 	}
