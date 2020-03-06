@@ -1,17 +1,22 @@
 import mongoose from "mongoose";
 
-async function connect() {
-    try {
-        //const url_connection = 'mongodb://jcastro:' + encodeURIComponent('Passw0rd!!') + '@localhost:27017/ts-app-tutorial?authSource=admin';
-        const url_connection = "mongodb://localhost/ts-app-tutorial";
-        await mongoose.connect(url_connection, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-        console.log(">>> Database Connected");
-    } catch (error) {
-        console.log(error);
-    }
-}
+export class MongoDB {
 
-export default connect;
+    constructor() { }
+
+    public async connect() {
+        try {
+            const { NOTE_APP_MONGODB_HOST, NOTE_APP_MONGODB_DATABASE } = process.env
+
+            const url_connection = `mongodb://${NOTE_APP_MONGODB_HOST}/${NOTE_APP_MONGODB_DATABASE}`;
+            await mongoose.connect(url_connection, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true
+            });
+            console.log(">>> Base de Datos Conectada <<<");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+}

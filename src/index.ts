@@ -1,8 +1,8 @@
 import { Aplicacion } from './App/app';
 
-async function main() {
-	const app = new Aplicacion(4000);
-	await app.Start();
+function main() {
+	const app = new Aplicacion();
+	app.Start();
 }
 
 main();

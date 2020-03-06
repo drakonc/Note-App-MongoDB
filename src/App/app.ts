@@ -1,20 +1,25 @@
 import express, { Application, Request, Response, NextFunction } from "express";
+import { config } from "dotenv";
 import exphbs from "express-handlebars";
 import morgan from "morgan";
 import path from "path";
+import { MongoDB } from "./Config/database";
+
 
 //Rutas
-import indexRouter from "./Routes/indexRouter";
+import indexRouter from "./Routes/Index/indexRouter";
 import erroRouter from "./Routes/404/404Router";
 
 const rutas: any[] = [indexRouter, erroRouter]
 
 export class Aplicacion {
 
-	public app: Application;
-	public port?: number | string;
+	private app: Application;
+	private port?: number | string;
+	private db = new MongoDB();
 
 	constructor(port?: number | string) {
+		config();
 		this.port = port;
 		this.app = express();
 		this.Settings();
@@ -24,12 +29,12 @@ export class Aplicacion {
 	}
 
 	private Settings(): void {
-		this.app.set("port", this.port || process.env.PORT || 3000);
+		this.app.set("port", this.port || process.env.PORT || 4000);
 		this.app.set("views", path.join(__dirname, "Views"));
 		this.app.engine(".hbs", exphbs({
 			layoutsDir: path.join(this.app.get("views"), "Layouts"),
 			partialsDir: path.join(this.app.get("views"), "Partials"),
-			defaultLayout: "main",
+			defaultLayout: "Main",
 			extname: ".hbs",
 			helpers: require('./Helpers/handlebars')
 		}));
@@ -53,8 +58,9 @@ export class Aplicacion {
 		this.app.use(rutas);
 	}
 
-	async Start() {
-		await this.app.listen(this.app.get("port"));
-		console.log(`Server on Port: ${this.app.get("port")}`);
+	public Start() {
+		this.app.listen(this.app.get("port"));
+		console.log(`>>> Server on Port: ${this.app.get("port")} <<<`);
+		this.db.connect();
 	}
 }
