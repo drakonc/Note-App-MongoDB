@@ -1,9 +1,19 @@
-function popupwindow(url, title, w, h)
-{ 
-    var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : window.screenX;
-    var dualScreenTop = window.screenTop != undefined ? window.screenTop : window.screenY;
+//Mensaje de Bienvenida
+function Bienvenido(icon, mensaje) {
+	Swal.fire({
+		position: 'top-end',
+		icon: icon,
+		title: mensaje,
+		showConfirmButton: false,
+		timer: 2000
+	});
+}
 
-    var left = (screen.width/2)-(w/2) + dualScreenLeft; 
-    var top = (screen.height/2)-(h) + dualScreenTop; 
-    return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left); 
+function SweetalertBootstrap() {
+	Swal.fire({
+		title: 'Hola!',
+		text: 'Bienvenido a la Aplicacións',
+		icon: 'success',
+		confirmButtonText: 'Ok'
+	});
 }

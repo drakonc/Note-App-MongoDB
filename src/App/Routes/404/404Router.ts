@@ -11,7 +11,7 @@ class ErrorRouter {
     }
 
     private config(): void {
-        this.router.get('*', errorController.index);
+        this.router.get('/*', errorController.index);
     }
 
 }

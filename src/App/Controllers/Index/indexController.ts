@@ -3,7 +3,9 @@ import { Request, Response } from 'express';
 class IndexController {
 
     public index(req: Request, res: Response) {
-        res.status(200).render('Views/Index/Index');
+        const nombre = 'Jose Castro';
+        const js = 'Index/index.js';
+        res.status(200).render('Views/Index/Index', { nombre, js });
     }
 
     public about(req: Request, res: Response) {

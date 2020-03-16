@@ -1,6 +1,7 @@
 import express, { Application, Request, Response, NextFunction } from "express";
 import { config } from "dotenv";
 import exphbs from "express-handlebars";
+import methodOverride from "method-override";
 import morgan from "morgan";
 import path from "path";
 import { MongoDB } from "./Config/database";
@@ -8,9 +9,10 @@ import { MongoDB } from "./Config/database";
 
 //Rutas
 import indexRouter from "./Routes/Index/indexRouter";
+import notasRouter from "./Routes/Notas/NotasRouter";
 import erroRouter from "./Routes/404/404Router";
 
-const rutas: any[] = [indexRouter, erroRouter]
+const rutas: any[] = [indexRouter, notasRouter, erroRouter]
 
 export class Aplicacion {
 
@@ -45,6 +47,7 @@ export class Aplicacion {
 		this.app.use(morgan("dev"));
 		this.app.use(express.json());
 		this.app.use(express.urlencoded({ extended: false }));
+		this.app.use(methodOverride('_method'));
 	}
 
 	private GlobalVariables(): void {

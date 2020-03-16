@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model, Document } from "mongoose";
 
 
 const NoteSchema = new Schema({
@@ -6,4 +6,4 @@ const NoteSchema = new Schema({
     descripcion: { type: String, required: true, uppercase: true },
 }, { timestamps: true });
 
-module.exports = model('Note', NoteSchema)
+module.exports = model("Note", NoteSchema);
