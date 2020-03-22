@@ -4,7 +4,7 @@
             <h3>Nueva Nota</h3>
         </div>
         <div class="card-body">
-            <form action="/notes/delete/{{note._id}}?_method=PUT" method="POST">
+            <form action="/notes/updat-note/{{note._id}}?_method=PUT" method="POST">
                 <input type="hidden" name="_method" value="PUT">
                 <div class="form-group">
                     <input type="text" class="form-control" name="titulo" id="IdTitulo" placeholder="Titulo de la Nota" autofocus value="{{note.titulo}}">
